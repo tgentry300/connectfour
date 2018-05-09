@@ -1,18 +1,17 @@
-let gameBoard = [
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0],
-]
+
+
+
+
+
+
+let gameBoard = createBlankGameboard()
 
 let columns = document.getElementsByClassName("columns")
 let clickMode = "playerone"
 const winner = document.getElementById("winner")
 const wrapper = document.getElementById("wrapper")
-//Place Circle
 
+//Place Circle
 function placeCircle() {
     let redCircle = document.createElement("div")
     let blackCircle = document.createElement("div")
@@ -35,15 +34,32 @@ function placeCircle() {
     checkWinner()
 }
 
-function checkWinner() {
-    if (checkVertical() || checkHorizontal() || checkDiagonalDownLeft() || checkDiagonalDownRight() == true) {
-        if (clickMode === "playertwo") {
-            winner.textContent = ("Red Wins!")
-        } else {
-            winner.textContent = ("Black Wins!")
-            }
-        }
+function resetGame() {
+    clickMode = "playerone"
+    winner.style.display = "none"
+    gameBoard = createBlankGameboard()
+
+    for (let column of columns) {
+        column.innerHTML = ""
     }
+    addClickiness()
+}
+
+function checkWinner() {
+    if (checkVertical() || checkHorizontal() || checkDiagonalDownLeft() || checkDiagonalDownRight()) {
+        removeClickiness()
+        winner.style.display = "block"
+        if (clickMode === "playertwo") {
+            winner.textContent = "Red Wins!"
+            winner.style.color = "red"
+        } else {
+            winner.textContent = "Black Wins!"
+            winner.style.color = "black"
+        }
+
+        setTimeout(resetGame, 2000)
+    }
+}
 
 
 //Place piece on board
@@ -61,11 +77,18 @@ function playGame(event) {
 
 
 //Click Event
-
-for (let column of columns) {
-    column.addEventListener("click", playGame)
+function addClickiness () {
+    for (let column of columns) {
+        column.addEventListener("click", playGame)
+    }
 }
 
+function removeClickiness () {
+    for (let column of columns) {
+        column.removeEventListener("click", playGame)
+    }
+    
+}
 
 
 /////////Win Conditions
@@ -74,6 +97,7 @@ for (let column of columns) {
 
 const edgeY = gameBoard.length - 3
 const edgeX = gameBoard[0].length - 3;
+
 function checkHorizontal() {
     for (let y = 0; y < gameBoard.length; y++) {
         let row = gameBoard[y];
@@ -122,7 +146,7 @@ function checkDiagonalDownRight() {
 
 
 function checkDiagonalDownLeft() {
-    for (let y = 2; y < gameBoard.length; y++) {
+    for (let y = 0; y < gameBoard.length; y++) {
 
         for (let x = 0; x < edgeX; x++) {
             cell = gameBoard[y][x];
@@ -136,3 +160,16 @@ function checkDiagonalDownLeft() {
         }
     }
 }
+
+function createBlankGameboard() {
+    return [ 
+        [ 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0 ],
+        [ 0, 0, 0, 0, 0, 0, 0 ]
+    ]
+}
+
+addClickiness()
