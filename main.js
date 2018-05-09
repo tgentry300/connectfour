@@ -1,9 +1,3 @@
-
-
-
-
-
-
 let gameBoard = createBlankGameboard()
 
 let columns = document.getElementsByClassName("columns")
@@ -12,7 +6,7 @@ const winner = document.getElementById("winner")
 const wrapper = document.getElementById("wrapper")
 
 //Place Circle
-function placeCircle() {
+function placeCircle(event) {
     let redCircle = document.createElement("div")
     let blackCircle = document.createElement("div")
     let clickedColumn = event.currentTarget
@@ -67,7 +61,7 @@ function checkWinner() {
 function playGame(event) {
     clickedColumn = event.currentTarget
     if (clickedColumn.childElementCount < 6) {
-        placeCircle()
+        placeCircle(event)
     } else {
         alert("Column Full, Please Try Again!")
     }
@@ -77,21 +71,21 @@ function playGame(event) {
 
 
 //Click Event
-function addClickiness () {
+function addClickiness() {
     for (let column of columns) {
         column.addEventListener("click", playGame)
     }
 }
 
-function removeClickiness () {
+function removeClickiness() {
     for (let column of columns) {
         column.removeEventListener("click", playGame)
     }
-    
+
 }
 
 
-/////////Win Conditions
+                //Win Conditions
 
 //Function to check for horizontal win condition
 
@@ -130,12 +124,9 @@ function checkVertical() {
 //Function to check for diagonal win condition
 function checkDiagonalDownRight() {
     for (let y = 0; y < edgeY; y++) {
-
         for (let x = 0; x < edgeX; x++) {
             cell = gameBoard[y][x];
-
             if (cell !== 0) {
-
                 if (cell === gameBoard[y + 1][x + 1] && cell === gameBoard[y + 2][x + 2] && cell === gameBoard[y + 3][x + 3]) {
                     return true
                 }
@@ -147,12 +138,9 @@ function checkDiagonalDownRight() {
 
 function checkDiagonalDownLeft() {
     for (let y = 0; y < gameBoard.length; y++) {
-
         for (let x = 0; x < edgeX; x++) {
             cell = gameBoard[y][x];
-
             if (cell !== 0) {
-
                 if (cell === gameBoard[y - 1][x + 1] && cell === gameBoard[y - 2][x + 2] && cell === gameBoard[y - 3][x + 3]) {
                     return true
                 }
@@ -162,13 +150,13 @@ function checkDiagonalDownLeft() {
 }
 
 function createBlankGameboard() {
-    return [ 
-        [ 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0 ],
-        [ 0, 0, 0, 0, 0, 0, 0 ]
+    return [
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0]
     ]
 }
 
