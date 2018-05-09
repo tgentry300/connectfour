@@ -1,0 +1,51 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.columns {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    border: 1px solid black;
+    height: 600px;
+    width: 100px;
+    margin: 0 1px 0 1px;
+    border-radius: 10px;
+}
+
+h1 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: red;
+    text-align: center;
+    font-size: 7em;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+
+#blackCircle {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-color: black;
+    margin: 5px;
+}
+
+#redCircle {
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    background-color: red;
+    margin: 5px;
+}
+#winner {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 16rem;
+}
+#winnerred {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    font-size: 16rem;
+}
