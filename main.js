@@ -13,12 +13,12 @@ let winCounter = {
 //Place Circle
 function placeCircle(event) {
     let redCircle = document.createElement("img")
-    redCircle.setAttribute("src", "redChecker.jpg")
-    let blackCircle = document.createElement("img")
-    blackCircle.setAttribute("src", "blackChecker.jpg")
-    let clickedColumn = event.currentTarget
+    redCircle.setAttribute("src", "./redChecker.jpg")
     redCircle.setAttribute("id", "redCircle")
+    let blackCircle = document.createElement("img")
+    blackCircle.setAttribute("src", "./blackChecker.jpg")
     blackCircle.setAttribute("id", "blackCircle")
+    let clickedColumn = event.currentTarget
     const columnId = clickedColumn.dataset.id
     const rowId = 5 - clickedColumn.childElementCount
 
