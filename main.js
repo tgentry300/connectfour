@@ -15,7 +15,7 @@ function placeCircle(event) {
     let redCircle = document.createElement("img")
     redCircle.setAttribute("src", "redChecker.jpg")
     let blackCircle = document.createElement("img")
-    blackCircle.setAttribute("src", "blackChecker.jpg")
+    blackCircle.setAttribute("src", "https://tgentry300.github.io/connectfour/blackChecker.jpg")
     let clickedColumn = event.currentTarget
     redCircle.setAttribute("id", "redCircle")
     blackCircle.setAttribute("id", "blackCircle")
