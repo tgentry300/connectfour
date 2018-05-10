@@ -5,6 +5,11 @@ let clickMode = "playerone"
 const winner = document.getElementById("winner")
 const wrapper = document.getElementById("wrapper")
 
+
+let winCounter = {
+    redWins: 0,
+    blackWins: 0,
+}
 //Place Circle
 function placeCircle(event) {
     let redCircle = document.createElement("img")
@@ -16,7 +21,6 @@ function placeCircle(event) {
     blackCircle.setAttribute("id", "blackCircle")
     const columnId = clickedColumn.dataset.id
     const rowId = 5 - clickedColumn.childElementCount
-
 
     if (clickMode == "playerone") {
         clickedColumn.appendChild(redCircle)
@@ -34,7 +38,7 @@ function resetGame() {
     clickMode = "playerone"
     winner.style.display = "none"
     gameBoard = createBlankGameboard()
-
+    
     for (let column of columns) {
         column.innerHTML = ""
     }
@@ -48,11 +52,13 @@ function checkWinner() {
         if (clickMode === "playertwo") {
             winner.textContent = "Red Wins!"
             winner.style.color = "red"
+            winCounter.redWins ++
         } else {
             winner.textContent = "Black Wins!"
             winner.style.color = "black"
+            winCounter.blackWins ++
         }
-
+        
         setTimeout(resetGame, 5000)
     }
 }
