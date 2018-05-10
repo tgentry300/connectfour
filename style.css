@@ -1,3 +1,12 @@
+@keyframes slidedown {
+        from{transform: translateY(-800px)}
+        to{transform: translateY(0px)}
+}
+#blackCircle, #redCircle {
+    animation-name: slidedown;
+    animation-duration: 1.5s;
+}
+
 body {
     background-color: rgb(64, 131, 255);
 }
@@ -6,6 +15,7 @@ body {
     flex-direction: row;
     justify-content: center;
     background-color: rgb(64, 131, 255);
+    margin-top: -13px;
 }
 
 .columns {
@@ -16,7 +26,7 @@ body {
     width: 100px;
     border-radius: 10px;
     position: relative;
-    background-color: whitesmoke;
+    background: linear-gradient(to left, white, grey);
     box-sizing: border-box;
 }
 
@@ -27,7 +37,7 @@ h1 {
     font-size: 7em;
     box-sizing: border-box;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: -20px;
 }
 
 #blackCircle {
@@ -43,24 +53,52 @@ h1 {
     width: 98px;
     height: 98px;
     background-color: red;
-    margin: 1.1px;
+    margin: 1px;
 }
 #winner {
     display: none;
     box-shadow: 0 0 100px 5px grey;
     position: absolute;
     z-index: 1;
-    margin-top: 20px;
+    margin-top: 0px;
     border: solid black 7px;
     border-radius: 50px;
     background-color: rgba(200, 200, 200, 0.75);
     font-family: 'Do Hyeon', sans-serif;
     text-align: center;
-    font-size: 16rem;
+    font-size: 14rem;
 }
 #board{
     position: absolute;
     z-index: 1;
     width: 700px;
     pointer-events: none;
+}
+#counterTitle{
+    font-size: 30px;
+    margin-bottom: 0px;
+    margin-top: -10px;
+}
+#blackWinCount {
+    margin-bottom: 5px;
+    font-size: 22px;
+}
+#redWinCount {
+    margin-bottom: 7px;
+    font-size: 22px;
+}
+#redWinCount, #blackWinCount, #counterTitle {
+    font-family: 'Do Hyeon', sans-serif;
+    text-align: center;
+}
+#counterWrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0;
+    margin-bottom: 10px;
+    justify-content: center;
+}
+footer {
+    font-family: 'Do Hyeon', sans-serif;
+    font-size: 25px;
 }

@@ -1,22 +1,25 @@
 let gameBoard = createBlankGameboard()
 
-let columns = document.getElementsByClassName("columns")
-let clickMode = "playerone"
+const columns = document.getElementsByClassName("columns")
 const winner = document.getElementById("winner")
-const wrapper = document.getElementById("wrapper")
-
+const redWinCount = document.getElementById("redWinCount")
+const blackWinCount = document.getElementById("blackWinCount")
+const counterTitle = document.getElementById("counterTitle")
 
 let winCounter = {
     redWins: 0,
     blackWins: 0,
 }
+let clickMode = "playerone"
+
+alert("Red goes first, click a column to place your piece!")
 //Place Circle
 function placeCircle(event) {
     let redCircle = document.createElement("img")
-    redCircle.setAttribute("src", "redchecker.jpg")
+    redCircle.setAttribute("src", "redchecker.png")
     redCircle.setAttribute("id", "redCircle")
     let blackCircle = document.createElement("img")
-    blackCircle.setAttribute("src", "blackchecker.jpg")
+    blackCircle.setAttribute("src", "blackchecker.png")
     blackCircle.setAttribute("id", "blackCircle")
     let clickedColumn = event.currentTarget
     const columnId = clickedColumn.dataset.id
@@ -58,8 +61,10 @@ function checkWinner() {
             winner.style.color = "black"
             winCounter.blackWins ++
         }
-        
-        setTimeout(resetGame, 5000)
+        setTimeout(resetGame, 3000)
+        counterTitle.textContent = "Win Counter"
+        redWinCount.textContent = "Red Wins: "+ winCounter.redWins
+        blackWinCount.textContent = "Black Wins: " + winCounter.blackWins
     }
 }
 
