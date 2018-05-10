@@ -35,13 +35,14 @@ function placeCircle(event) {
         clickMode = "playerone"
     }
     checkWinner()
+    console.log(gameBoard)
 }
 
 function resetGame() {
     clickMode = "playerone"
     winner.style.display = "none"
     gameBoard = createBlankGameboard()
-    
+
     for (let column of columns) {
         column.innerHTML = ""
     }
@@ -55,15 +56,15 @@ function checkWinner() {
         if (clickMode === "playertwo") {
             winner.textContent = "Red Wins!"
             winner.style.color = "red"
-            winCounter.redWins ++
+            winCounter.redWins++
         } else {
             winner.textContent = "Black Wins!"
             winner.style.color = "black"
-            winCounter.blackWins ++
+            winCounter.blackWins++
         }
         setTimeout(resetGame, 3000)
         counterTitle.textContent = "Win Counter"
-        redWinCount.textContent = "Red Wins: "+ winCounter.redWins
+        redWinCount.textContent = "Red Wins: " + winCounter.redWins
         blackWinCount.textContent = "Black Wins: " + winCounter.blackWins
     }
 }
@@ -98,7 +99,7 @@ function removeClickiness() {
 }
 
 
-                //Win Conditions
+//Win Conditions
 
 //Function to check for horizontal win condition
 
