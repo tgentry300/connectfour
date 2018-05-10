@@ -7,8 +7,10 @@ const wrapper = document.getElementById("wrapper")
 
 //Place Circle
 function placeCircle(event) {
-    let redCircle = document.createElement("div")
-    let blackCircle = document.createElement("div")
+    let redCircle = document.createElement("img")
+    redCircle.setAttribute("src", "redChecker.jpg")
+    let blackCircle = document.createElement("img")
+    blackCircle.setAttribute("src", "blackChecker.jpg")
     let clickedColumn = event.currentTarget
     redCircle.setAttribute("id", "redCircle")
     blackCircle.setAttribute("id", "blackCircle")
@@ -51,7 +53,7 @@ function checkWinner() {
             winner.style.color = "black"
         }
 
-        setTimeout(resetGame, 2000)
+        setTimeout(resetGame, 5000)
     }
 }
 
