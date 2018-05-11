@@ -1,4 +1,10 @@
-let gameBoard = createBlankGameboard()
+const config = {}
+config.rowCount = 6
+config.columnCount = 7
+config.edgeY = config.rowCount - 3
+config.edgeX = config.columnCount - 3
+
+gameBoard = createBlankGameboard()
 
 const columns = document.getElementsByClassName("columns")
 const winner = document.getElementById("winner")
@@ -35,7 +41,7 @@ function placeCircle(event) {
         clickMode = "playerone"
     }
     checkWinner()
-    console.log(gameBoard)
+    // console.log(gameBoard)
 }
 
 function resetGame() {
@@ -103,16 +109,14 @@ function removeClickiness() {
 
 //Function to check for horizontal win condition
 
-const edgeY = gameBoard.length - 3
-const edgeX = gameBoard[0].length - 3;
 
 function checkHorizontal() {
-    for (let y = 0; y < gameBoard.length; y++) {
-        let row = gameBoard[y];
-        for (let x = 0; x < edgeX; x++) {
-            let cell = row[x];
+    for (let rowIndex = 0; rowIndex < gameBoard.length; rowIndex++) {
+        let row = gameBoard[rowIndex];
+        for (let columnIndex = 0; columnIndex < config.edgeX; columnIndex++) {
+            let cell = row[columnIndex];
             if (cell !== 0) {
-                if (cell === gameBoard[y][x + 1] && cell === gameBoard[y][x + 2] && cell === gameBoard[y][x + 3]) {
+                if (cell === gameBoard[rowIndex][columnIndex + 1] && cell === gameBoard[rowIndex][columnIndex + 2] && cell === gameBoard[rowIndex][columnIndex + 3]) {
                     return true
                 }
             }
@@ -122,11 +126,11 @@ function checkHorizontal() {
 
 //Function to check for vertical win condition      
 function checkVertical() {
-    for (let y = 0; y < edgeY; y++) {
-        for (let x = 0; x < gameBoard[0].length; x++) {
-            cell = gameBoard[y][x];
+    for (let rowIndex = 0; rowIndex < config.edgeY; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < gameBoard[0].length; columnIndex++) {
+            cell = gameBoard[rowIndex][columnIndex];
             if (cell !== 0) {
-                if (cell === gameBoard[y + 1][x] && cell === gameBoard[y + 2][x] && cell === gameBoard[y + 3][x]) {
+                if (cell === gameBoard[rowIndex + 1][columnIndex] && cell === gameBoard[rowIndex + 2][columnIndex] && cell === gameBoard[rowIndex + 3][columnIndex]) {
                     return true
                 }
             }
@@ -137,11 +141,11 @@ function checkVertical() {
 
 //Function to check for diagonal win condition
 function checkDiagonalDownRight() {
-    for (let y = 0; y < edgeY; y++) {
-        for (let x = 0; x < edgeX; x++) {
-            cell = gameBoard[y][x];
+    for (let rowIndex = 0; rowIndex < config.edgeY; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < config.edgeX; columnIndex++) {
+            cell = gameBoard[rowIndex][columnIndex];
             if (cell !== 0) {
-                if (cell === gameBoard[y + 1][x + 1] && cell === gameBoard[y + 2][x + 2] && cell === gameBoard[y + 3][x + 3]) {
+                if (cell === gameBoard[rowIndex + 1][columnIndex + 1] && cell === gameBoard[rowIndex + 2][columnIndex + 2] && cell === gameBoard[rowIndex + 3][columnIndex + 3]) {
                     return true
                 }
             }
@@ -151,11 +155,11 @@ function checkDiagonalDownRight() {
 
 
 function checkDiagonalDownLeft() {
-    for (let y = 0; y < gameBoard.length; y++) {
-        for (let x = 0; x < edgeX; x++) {
-            cell = gameBoard[y][x];
+    for (let rowIndex = 0; rowIndex < gameBoard.length; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < config.edgeX; columnIndex++) {
+            cell = gameBoard[rowIndex][columnIndex];
             if (cell !== 0) {
-                if (cell === gameBoard[y - 1][x + 1] && cell === gameBoard[y - 2][x + 2] && cell === gameBoard[y - 3][x + 3]) {
+                if (cell === gameBoard[rowIndex - 1][columnIndex + 1] && cell === gameBoard[rowIndex - 2][columnIndex + 2] && cell === gameBoard[rowIndex - 3][columnIndex + 3]) {
                     return true
                 }
             }
